@@ -41,20 +41,19 @@ namespace SkypeCC.DAL
 
         private void FilUserMessagesFromReader(SQLiteDataReader reader, User user, Messages messages)
         {
+            DateTime dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
             while (reader.Read())
             {
                 int id = GetInt32(reader, "id");
                 string author = GetString(reader, "author");
                 int timestamp = GetInt32(reader, "timestamp");
                 string bodyXml = GetString(reader, "body_xml");
-                DateTime dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
-                dtDateTime = dtDateTime.AddSeconds(timestamp).ToLocalTime();
 
                 messages.Add(new Message
                 (
                     id,
                     author != user.Nick,
-                    dtDateTime,
+                    dtDateTime.AddSeconds(timestamp).ToLocalTime(),
                     bodyXml
                 ));
             }
