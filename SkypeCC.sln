@@ -7,18 +7,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkypeCC", "SkypeCC.csproj",
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
 		Debug|x86 = Debug|x86
-		Release|Any CPU = Release|Any CPU
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{0283B8E0-5AD1-4728-A4DF-9B32B72431B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0283B8E0-5AD1-4728-A4DF-9B32B72431B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0283B8E0-5AD1-4728-A4DF-9B32B72431B1}.Debug|x86.ActiveCfg = Debug|x86
 		{0283B8E0-5AD1-4728-A4DF-9B32B72431B1}.Debug|x86.Build.0 = Debug|x86
-		{0283B8E0-5AD1-4728-A4DF-9B32B72431B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0283B8E0-5AD1-4728-A4DF-9B32B72431B1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0283B8E0-5AD1-4728-A4DF-9B32B72431B1}.Release|x86.ActiveCfg = Release|x86
 		{0283B8E0-5AD1-4728-A4DF-9B32B72431B1}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
