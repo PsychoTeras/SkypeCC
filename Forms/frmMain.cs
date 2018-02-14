@@ -290,6 +290,12 @@ MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) != DialogResult.Yes)
             ListViewItem item = lvMessages.GetItemAt(e.X, e.Y), selectedItem;
             if (item == null) return;
 
+            if (e.Clicks == 2)
+            {
+                item.Checked = !item.Checked;
+                return;
+            }
+
             if (ModifierKeys == Keys.Control)
             {
                 item.Checked = !item.Checked;
@@ -328,6 +334,15 @@ MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) != DialogResult.Yes)
                     DeleteSelectedMessages();
                     break;
                 }
+            }
+        }
+
+        private void lvMessages_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            ListViewItem item = lvMessages.GetItemAt(e.X, e.Y);
+            if (item != null)
+            {
+                EditSelectedMessage();
             }
         }
 

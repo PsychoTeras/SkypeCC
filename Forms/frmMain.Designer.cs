@@ -35,17 +35,16 @@ namespace SkypeCC.Forms
             this.scMain = new System.Windows.Forms.SplitContainer();
             this.cbProfile = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.lbUsers = new SkypeCC.Controls.ListBoxCC();
             this.tsMessages = new System.Windows.Forms.ToolStrip();
             this.btnMessagesDeleteSelected = new System.Windows.Forms.ToolStripButton();
             this.btnMessageEdit = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnMessagesClearAll = new System.Windows.Forms.ToolStripButton();
-            this.ilMessages = new System.Windows.Forms.ImageList(this.components);
-            this.lbUsers = new SkypeCC.Controls.ListBoxCC();
             this.lvMessages = new SkypeCC.Controls.ListViewCC();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ilMessages = new System.Windows.Forms.ImageList(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.scMain)).BeginInit();
             this.scMain.Panel1.SuspendLayout();
             this.scMain.Panel2.SuspendLayout();
@@ -99,6 +98,20 @@ namespace SkypeCC.Forms
             this.label1.TabIndex = 2;
             this.label1.Text = "Profile:";
             // 
+            // lbUsers
+            // 
+            this.lbUsers.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbUsers.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.lbUsers.FormattingEnabled = true;
+            this.lbUsers.IntegralHeight = false;
+            this.lbUsers.Location = new System.Drawing.Point(0, 27);
+            this.lbUsers.Name = "lbUsers";
+            this.lbUsers.Size = new System.Drawing.Size(270, 711);
+            this.lbUsers.TabIndex = 0;
+            this.lbUsers.SelectedIndexChanged += new System.EventHandler(this.lbUsers_SelectedIndexChanged);
+            // 
             // tsMessages
             // 
             this.tsMessages.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -109,11 +122,10 @@ namespace SkypeCC.Forms
             this.tsMessages.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnMessagesDeleteSelected,
             this.btnMessageEdit,
-            this.toolStripSeparator1,
             this.btnMessagesClearAll});
             this.tsMessages.Location = new System.Drawing.Point(0, -1);
             this.tsMessages.Name = "tsMessages";
-            this.tsMessages.Size = new System.Drawing.Size(737, 25);
+            this.tsMessages.Size = new System.Drawing.Size(733, 25);
             this.tsMessages.TabIndex = 1;
             this.tsMessages.Text = "toolStrip1";
             // 
@@ -135,40 +147,15 @@ namespace SkypeCC.Forms
             this.btnMessageEdit.Text = "Edit selected";
             this.btnMessageEdit.Click += new System.EventHandler(this.btnMessageEdit_Click);
             // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
             // btnMessagesClearAll
             // 
+            this.btnMessagesClearAll.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.btnMessagesClearAll.Image = ((System.Drawing.Image)(resources.GetObject("btnMessagesClearAll.Image")));
             this.btnMessagesClearAll.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnMessagesClearAll.Name = "btnMessagesClearAll";
             this.btnMessagesClearAll.Size = new System.Drawing.Size(75, 22);
             this.btnMessagesClearAll.Text = "Delete all";
             this.btnMessagesClearAll.Click += new System.EventHandler(this.btnMessagesClearAll_Click);
-            // 
-            // ilMessages
-            // 
-            this.ilMessages.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ilMessages.ImageStream")));
-            this.ilMessages.TransparentColor = System.Drawing.Color.Transparent;
-            this.ilMessages.Images.SetKeyName(0, "bullet_blue.png");
-            this.ilMessages.Images.SetKeyName(1, "bullet_black.png");
-            // 
-            // lbUsers
-            // 
-            this.lbUsers.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbUsers.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.lbUsers.FormattingEnabled = true;
-            this.lbUsers.IntegralHeight = false;
-            this.lbUsers.Location = new System.Drawing.Point(0, 27);
-            this.lbUsers.Name = "lbUsers";
-            this.lbUsers.Size = new System.Drawing.Size(270, 711);
-            this.lbUsers.TabIndex = 0;
-            this.lbUsers.SelectedIndexChanged += new System.EventHandler(this.lbUsers_SelectedIndexChanged);
             // 
             // lvMessages
             // 
@@ -188,12 +175,13 @@ namespace SkypeCC.Forms
             this.lvMessages.MultiSelect = false;
             this.lvMessages.Name = "lvMessages";
             this.lvMessages.OwnerDraw = true;
-            this.lvMessages.Size = new System.Drawing.Size(737, 711);
+            this.lvMessages.Size = new System.Drawing.Size(733, 711);
             this.lvMessages.SmallImageList = this.ilMessages;
             this.lvMessages.TabIndex = 0;
             this.lvMessages.UseCompatibleStateImageBehavior = false;
             this.lvMessages.View = System.Windows.Forms.View.Details;
             this.lvMessages.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lvMessages_KeyDown);
+            this.lvMessages.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lvMessages_MouseDoubleClick);
             this.lvMessages.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lvMessages_MouseDown);
             // 
             // columnHeader1
@@ -209,7 +197,14 @@ namespace SkypeCC.Forms
             // columnHeader3
             // 
             this.columnHeader3.Text = "Message";
-            this.columnHeader3.Width = 557;
+            this.columnHeader3.Width = 553;
+            // 
+            // ilMessages
+            // 
+            this.ilMessages.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ilMessages.ImageStream")));
+            this.ilMessages.TransparentColor = System.Drawing.Color.Transparent;
+            this.ilMessages.Images.SetKeyName(0, "bullet_blue.png");
+            this.ilMessages.Images.SetKeyName(1, "bullet_black.png");
             // 
             // frmMain
             // 
@@ -246,7 +241,6 @@ namespace SkypeCC.Forms
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ImageList ilMessages;
         private System.Windows.Forms.ToolStripButton btnMessagesClearAll;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton btnMessageEdit;
     }
 }

@@ -1,9 +1,16 @@
-﻿using System.Windows.Forms;
+﻿using System.Drawing;
+using System.Windows.Forms;
 
 namespace SkypeCC.Forms
 {
     public partial class frmEditMessage : Form
     {
+
+#region Static methods
+
+        private static Size _formSize;
+
+#endregion
 
 #region Properties
 
@@ -26,6 +33,10 @@ namespace SkypeCC.Forms
         {
             tbMessage.Text = oldMessage;
             tbMessage.SelectionStart = tbMessage.Text.Length;
+            if (_formSize != default(Size))
+            {
+                Size = _formSize;
+            }
             return ShowDialog() == DialogResult.OK;
         }
 
@@ -47,6 +58,11 @@ namespace SkypeCC.Forms
                     break;
                 }
             }
+        }
+
+        private void frmEditMessage_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            _formSize = Size;
         }
 
 #endregion

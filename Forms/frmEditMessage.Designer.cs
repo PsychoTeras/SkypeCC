@@ -86,6 +86,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Edit Message";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmEditMessage_FormClosing);
             this.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.frmEditMessage_PreviewKeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
