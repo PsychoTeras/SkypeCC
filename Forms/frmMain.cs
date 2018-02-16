@@ -19,7 +19,7 @@ namespace SkypeCC.Forms
 
         private const string ProfileDbFile = "main.db";
 
-        private static readonly string SkypeFolderPath = Path.Combine(Environment.GetEnvironmentVariable("APPDATA") ?? "", "Skype");
+        private static readonly string _skypeFolderPath = Path.Combine(Environment.GetEnvironmentVariable("APPDATA") ?? "", "Skype");
 
 #endregion
 
@@ -37,7 +37,7 @@ namespace SkypeCC.Forms
                 if (cbProfile.SelectedItem == null) return null;
 
                 string dbName = cbProfile.SelectedItem.ToString();
-                string dataBaseFile = Path.Combine(SkypeFolderPath, dbName);
+                string dataBaseFile = Path.Combine(_skypeFolderPath, dbName);
                 return Path.Combine(dataBaseFile, ProfileDbFile);
             }
         }
@@ -63,7 +63,7 @@ namespace SkypeCC.Forms
 
         private void GetSkypeUserNames()
         {
-            foreach (string folder in Directory.GetDirectories(SkypeFolderPath))
+            foreach (string folder in Directory.GetDirectories(_skypeFolderPath))
             {
                 string mainDbFile = Path.Combine(folder, ProfileDbFile);
                 if (File.Exists(mainDbFile))
@@ -88,7 +88,7 @@ namespace SkypeCC.Forms
                 if (cbProfile.SelectedItem != null)
                 {
                     string dbName = cbProfile.SelectedItem.ToString();
-                    string dataBaseFile = Path.Combine(SkypeFolderPath, dbName);
+                    string dataBaseFile = Path.Combine(_skypeFolderPath, dbName);
                     dataBaseFile = Path.Combine(dataBaseFile, "main.db");
                     using (UserDAL dal = new UserDAL(dataBaseFile))
                     {
